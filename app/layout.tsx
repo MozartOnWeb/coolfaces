@@ -1,15 +1,7 @@
-import "server only";
 import "../../sass/index.scss";
 
 //import fonts
 import { Neue_Mechanica, Roboto_Mono } from "@/public/assets/fonts";
-
-//import components
-import SupabaseAuthProvider from "@/components/providers/supabase-auth-provider";
-import SupabaseProvider from "@/components/providers/supabase-provider";
-
-//import supabase
-import { createClient } from "@/utils/supabase-server";
 
 export const metadata = {
   title: {
@@ -42,20 +34,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = createClient();
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
   return (
     <html lang="fr">
       <body className={`${Neue_Mechanica.variable} ${Roboto_Mono.variable}`}>
-        <SupabaseProvider>
-          <SupabaseAuthProvider serverSession={session}>
-            {children}
-          </SupabaseAuthProvider>
-        </SupabaseProvider>
+        {children}
       </body>
     </html>
   );
