@@ -1,5 +1,7 @@
 .pagination {
   margin-top: 70px;
+  margin-bottom: 80px;
+  border: none;
 
   width: 100%;
 
@@ -22,6 +24,7 @@
     align-items: center;
     gap: 5px;
     position: relative;
+    cursor: pointer;
 
     p {
       font-size: 2rem;
@@ -50,5 +53,9 @@
 
   .next p::after {
     left: -4px;
+  }
+
+  .current {
+    font-size: 1.8rem;
   }
 }

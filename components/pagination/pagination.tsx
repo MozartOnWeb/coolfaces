@@ -13,7 +13,7 @@ export const Pagination = (props: Props) => {
         <p>Prev</p>
       </div>
 
-      <div className="current">1/14</div>
+      <div className="current">1 / 14</div>
 
       <div className="next">
         <p>Next</p>
