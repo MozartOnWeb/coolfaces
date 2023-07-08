@@ -1,5 +1,6 @@
 //import components
 import { Typeface } from "@/components/typeface/typeface";
+import { Pagination } from "@/components/pagination/pagination";
 
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
         <Typeface />
         <Typeface />
       </section>
+
+      <Pagination />
     </main>
   );
 }

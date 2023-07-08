@@ -1,0 +1,54 @@
+.pagination {
+  margin-top: 70px;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  text-decoration: none;
+  color: $white;
+
+  @media screen and (max-width: 859px) {
+  }
+
+  @media screen and (max-width: 659px) {
+  }
+
+  .prev,
+  .next {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+
+    p {
+      font-size: 2rem;
+    }
+
+    p::after {
+      content: "";
+      background-color: $white;
+      height: 1px;
+      position: absolute;
+      bottom: -5px;
+      width: 0;
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    &:hover {
+      p::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .prev p::after {
+    left: 5px;
+  }
+
+  .next p::after {
+    left: -4px;
+  }
+}
