@@ -7,6 +7,30 @@
     background: $gray;
     margin-bottom: 30px;
   }
+
+  .divider-2 {
+    margin-top: 50px;
+  }
+
+  .copyright {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    font-size: 1.6rem;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    @media screen and (max-width: 659px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
 
 .footer-container {
@@ -40,6 +64,7 @@
       display: flex;
       gap: 20px;
       align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
