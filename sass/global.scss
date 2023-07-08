@@ -1,7 +1,7 @@
 html {
   font-size: 61.2%;
   background-color: $background-color;
-  color: $black;
+  color: $white;
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -11,7 +11,8 @@ body {
   padding: 0;
 }
 
-.container {
-  padding: 0 20px;
-  margin: 0 20px;
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }

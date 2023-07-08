@@ -9,6 +9,9 @@ const manrope = Manrope({
   display: "swap",
 });
 
+//import components
+import Navbar from "@/components/navbar/navbar";
+
 export const metadata = {
   title: {
     default: "Cool Faces",
@@ -42,7 +45,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={manrope.className}>{children}</body>
+      <body className={manrope.className}>
+        <section className="main-container">
+          <Navbar />
+          {children}
+        </section>
+      </body>
     </html>
   );
 }
