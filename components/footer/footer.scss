@@ -1,0 +1,52 @@
+.footer {
+  width: 100%;
+  margin-bottom: 40px;
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: $gray;
+    margin-bottom: 30px;
+  }
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 35px;
+
+  .headline {
+    h5 {
+      font-size: 8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 2rem;
+      max-width: 500px;
+      line-height: 120%;
+    }
+  }
+
+  .links-container {
+    p {
+      font-size: 1.8rem;
+      color: $gray;
+      margin-bottom: 15px;
+    }
+
+    div {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    a {
+      text-decoration: underline;
+      color: $white;
+      font-size: 1.6rem;
+    }
+  }
+}

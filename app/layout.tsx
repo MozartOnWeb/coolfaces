@@ -11,6 +11,7 @@ const manrope = Manrope({
 
 //import components
 import Navbar from "@/components/navbar/navbar";
+import Footer from "@/components/footer/footer";
 
 export const metadata = {
   title: {
@@ -49,6 +50,7 @@ export default async function RootLayout({
         <section className="main-container">
           <Navbar />
           {children}
+          <Footer />
         </section>
       </body>
     </html>

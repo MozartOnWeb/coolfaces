@@ -11,6 +11,11 @@ export default function Home() {
         <Typeface />
         <Typeface />
         <Typeface />
+        <Typeface />
+        <Typeface />
+        <Typeface />
+        <Typeface />
+        <Typeface />
       </section>
 
       <Pagination />
