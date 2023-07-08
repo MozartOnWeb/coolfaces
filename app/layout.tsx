@@ -1,14 +1,20 @@
-import "../../sass/index.scss";
+import "@/sass/index.scss";
 
 //import fonts
-import { Neue_Mechanica, Roboto_Mono } from "@/public/assets/fonts";
+import { Manrope } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: {
-    default: "Next & Sanity Boilerplate",
-    template: "%s | Next & Sanity Boilerplate",
+    default: "Cool Faces",
+    template: "%s | Cool Faces",
   },
-  keywords: ["Next.js", "Sanity.io", "Boilerplate"],
+  keywords: ["fonts", "fonts families"],
   robots: {
     index: true,
     follow: true,
@@ -36,9 +42,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={`${Neue_Mechanica.variable} ${Roboto_Mono.variable}`}>
-        {children}
-      </body>
+      <body className={manrope.className}>{children}</body>
     </html>
   );
 }
