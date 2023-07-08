@@ -1,16 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const [menuToggled, setMenuToggled] = useState<boolean>(false);
+
+  const handleToggled = () => {
+    setMenuToggled(!menuToggled);
+  };
+
   return (
     <div className="navbar">
       <Link href={""} className="logo">
         CF
+      </Link>
+
+      <Link href={""} className="mobile-logo">
+        cool faces
       </Link>
 
       <div className="links">
@@ -132,21 +143,26 @@ const Navbar = (props: Props) => {
         </Link>
       </div>
 
-      <div className="hamburger-menu">
+      <div onClick={handleToggled} className="hamburger-menu">
         <div></div>
         <div></div>
         <div></div>
       </div>
-    </div>
-  );
-};
 
-const HamburgerMenu = () => {
-  return (
-    <div className="mobile-links">
-      <Link href={""} className="mobile-link">
-        <p>slab</p>
-      </Link>
+      <AnimatePresence>
+        {menuToggled ? (
+          <motion.div
+            initial={{ x: 30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 30, opacity: 0 }}
+            className="mobile-links"
+          >
+            <Link href={""} className="mobile-link">
+              <p>slab</p>
+            </Link>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 };
