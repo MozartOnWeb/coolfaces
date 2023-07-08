@@ -19,7 +19,8 @@ const Navbar = (props: Props) => {
   return (
     <div className="navbar" onClick={(e) => e.stopPropagation()}>
       <Link href={""} className="logo">
-        CF
+        <p>CF</p>
+        <span>Cool Faces</span>
       </Link>
 
       <Link href={""} className="mobile-logo">
