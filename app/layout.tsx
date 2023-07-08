@@ -1,3 +1,4 @@
+import "server only";
 import "../../sass/index.scss";
 
 //import fonts
