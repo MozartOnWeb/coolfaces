@@ -16,3 +16,16 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+
+.container {
+  margin-top: 60px;
+
+  @media screen and (max-width: 659px) {
+    margin-top: 50px;
+  }
+
+  h1 {
+    color: $gray;
+    font-size: 2rem;
+  }
+}
