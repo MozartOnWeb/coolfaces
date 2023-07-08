@@ -1,0 +1,102 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (max-width: 572px) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: 466px) {
+    flex-direction: row;
+  }
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 6rem;
+  font-weight: 600;
+  color: $white;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @media screen and (max-width: 648px) {
+    font-size: 5rem;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+
+  .link {
+    text-decoration: none;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    svg {
+      width: 70px;
+      height: 70px;
+    }
+
+    p {
+      margin-top: -5px;
+      text-transform: capitalize;
+    }
+
+    &:hover {
+      transform: scale(1.5);
+    }
+
+    @media screen and (max-width: 648px) {
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    @media screen and (max-width: 572px) {
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  @media screen and (max-width: 572px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 466px) {
+    display: none;
+  }
+}
+
+.hamburger-menu {
+  display: none;
+
+  @media screen and (max-width: 466px) {
+    display: block;
+    width: 25px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    div {
+      height: 2px;
+      width: 100%;
+      background-color: $white;
+      border-radius: 20px;
+    }
+  }
+}
+
+.mobile-links {
+  display: none;
+}
