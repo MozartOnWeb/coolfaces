@@ -17,7 +17,7 @@ const Navbar = (props: Props) => {
   };
 
   return (
-    <div className="navbar">
+    <div className="navbar" onClick={(e) => e.stopPropagation()}>
       <Link href={""} className="logo">
         CF
       </Link>
