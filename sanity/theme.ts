@@ -1,12 +1,12 @@
 import { buildLegacyTheme } from "sanity";
 
 const props = {
-  "--white": "#fff",
-  "--black": "#1a1a1a",
-  "--green": "#2a9d8f", //PRIMARY COLOR
+  "--white": "#fff7e8",
+  "--black": "#161616",
+  "--primary": "#a29d955e", //PRIMARY COLOR
   "--red": "#db4437",
   "--yellow": "#f4b400", //SECONDARY COLOR
-  "--success": "#0f9d58",
+  "--success": "#2a9d8f",
 };
 
 export const sanityTheme = buildLegacyTheme({
@@ -21,17 +21,17 @@ export const sanityTheme = buildLegacyTheme({
   "--component-text-color": props["--white"],
 
   // BRAND
-  "--brand-primary": props["--green"],
+  "--brand-primary": props["--primary"],
 
   //DEFAULT BUTTON
   "--default-button-color": "#666",
-  "--default-button-primary-color": props["--green"],
+  "--default-button-primary-color": props["--primary"],
   "--default-button-success-color": props["--success"],
   "--default-button-warning-color": props["--yellow"],
   "--default-button-danger-color": props["--red"],
 
   //STATE
-  "--state-info-color": props["--green"],
+  "--state-info-color": props["--primary"],
   "--state-success-color": props["--success"],
   "--state-warning-color": props["--yellow"],
   "--state-danger-color": props["--red"],
@@ -41,5 +41,5 @@ export const sanityTheme = buildLegacyTheme({
   "--main-navigation-color--inverted": props["--white"],
 
   //FOCUS
-  "--focus-color": props["--green"],
+  "--focus-color": props["--primary"],
 });
