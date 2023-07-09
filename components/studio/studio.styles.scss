@@ -1,0 +1,36 @@
+.goToWebsiteContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  svg {
+    margin-right: 10px;
+    path {
+      fill: white;
+    }
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 100%;
+  background-color: #fff;
+}
