@@ -7,6 +7,9 @@
 /* Import global styles */
 @import "./global.scss";
 
+/* Import layout styles */
+@import "../app/typeface/typeface.layout.scss";
+
 /* Import pages styles */
 @import "../app/home.scss";
 @import "../app/typeface/[slug]/typeface.scss";
