@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export const Typeface = (props: Props) => {
   return (
-    <Link href={""} className="typeface">
+    <Link href={"/typeface/pilowlava"} className="typeface">
       <Image className="type-image" src={TypeImage} alt="type-image" />
 
       <Image className="typeface-icon" src={TypefaceIcon} alt="typeface-icon" />
