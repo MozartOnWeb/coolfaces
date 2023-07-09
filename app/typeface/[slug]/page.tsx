@@ -1,3 +1,9 @@
+// import components
+import { Separator } from "@/components/ui/Separator";
+
+//import icons
+import { Download } from "lucide-react";
+
 export default function Page({ params }: { params: { slug: string } }) {
   return (
     <main className="container">
@@ -11,14 +17,17 @@ export default function Page({ params }: { params: { slug: string } }) {
               <h4>Category</h4>
               <p>Display</p>
             </div>
+            <Separator />
             <div>
               <h4>Styles</h4>
               <p>1 style</p>
             </div>
+            <Separator />
             <div>
               <h4>License</h4>
               <p>SIL Open Font License, Version 1.1</p>
             </div>
+            <Separator />
             <div>
               <h4>Infos</h4>
               <p>
@@ -27,6 +36,11 @@ export default function Page({ params }: { params: { slug: string } }) {
                 another. The result is a typeface that recalls cooled lava flows
                 drawn with a compass.
               </p>
+            </div>
+            <Separator />
+            <div>
+              <p>Get this typeface</p>
+              <Download />
             </div>
           </div>
 
