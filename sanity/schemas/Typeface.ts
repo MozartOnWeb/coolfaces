@@ -23,7 +23,7 @@ export const Typeface: SchemaTypeDefinition = {
     },
     {
       name: "title",
-      type: "title",
+      type: "image",
       title: "Title",
       options: {
         hotspot: true,
@@ -32,7 +32,7 @@ export const Typeface: SchemaTypeDefinition = {
     },
     {
       name: "background",
-      type: "background",
+      type: "image",
       title: "Background",
       options: {
         hotspot: true,
@@ -41,7 +41,7 @@ export const Typeface: SchemaTypeDefinition = {
     },
     {
       name: "icon",
-      type: "icon",
+      type: "image",
       title: "Icon",
       options: {
         hotspot: true,
@@ -61,9 +61,14 @@ export const Typeface: SchemaTypeDefinition = {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: "external-link",
+      name: "external_link",
       type: "string",
       title: "External Link",
+    },
+    {
+      name: "files",
+      type: "file",
+      title: "Files",
     },
     {
       name: "categories",
