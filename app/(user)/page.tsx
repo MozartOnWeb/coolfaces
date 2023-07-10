@@ -16,7 +16,17 @@ export default async function Home() {
 
       <section className="typefaces-container">
         {typefaces.map((typeface) => (
-          <Typeface key={typeface.slug} />
+          <Typeface
+            slug={typeface.slug}
+            alt={typeface.name}
+            background={typeface.background}
+            icon={typeface.icon}
+            key={typeface.slug}
+            categories={typeface.categories[0].name}
+            license={typeface.license[0].name}
+            name={typeface.name}
+            styles={typeface.styles}
+          />
         ))}
       </section>
 
