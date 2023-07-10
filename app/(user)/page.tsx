@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 //import components
 import { Typeface as TypefaceTypes } from "@/typings";
 
@@ -18,32 +16,17 @@ export default async function Home() {
 
       <section className="typefaces-container">
         {typefaces.map((typeface) => (
-          <Suspense
-            key={typeface.slug}
-            fallback={
-              <p
-                style={{
-                  textAlign: "center",
-                  backgroundColor: "red",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                Loading feed...
-              </p>
-            }
-          >
-            <Typeface
-              slug={typeface.slug}
-              alt={typeface.name}
-              background={typeface.background}
-              icon={typeface.icon}
-              categories={typeface.categories[0].name}
-              license={typeface.license[0].name}
-              name={typeface.name}
-              styles={typeface.styles}
-            />
-          </Suspense>
+          <Typeface
+            key={typeface.name}
+            slug={typeface.slug}
+            alt={typeface.name}
+            background={typeface.background}
+            icon={typeface.icon}
+            categories={typeface.categories[0].name}
+            license={typeface.license[0].name}
+            name={typeface.name}
+            styles={typeface.styles}
+          />
         ))}
       </section>
 
