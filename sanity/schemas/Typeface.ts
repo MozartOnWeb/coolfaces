@@ -78,8 +78,8 @@ export const Typeface: SchemaTypeDefinition = {
       // validation: (Rule: Rule) => Rule.unique(),
     },
     {
-      name: "licenses",
-      title: "Licenses",
+      name: "license",
+      title: "License",
       type: "array",
       of: [{ type: "reference", to: { type: "license" } }],
       // validation: (Rule: Rule) => Rule.unique(),
