@@ -8,14 +8,15 @@
 @import "./global.scss";
 
 /* Import layout styles */
-@import "../app/typeface/typeface.layout.scss";
+@import "../app/(user)/typeface/typeface.layout.scss";
 
 /* Import pages styles */
-@import "../app/home.scss";
-@import "../app/typeface/[slug]/typeface.scss";
+@import "../app/(user)/home.scss";
+@import "../app/(user)/typeface/[slug]/typeface.scss";
 
 /* Import components styles */
 @import "../components/navbar/navbar.scss";
 @import "../components/footer/footer.scss";
 @import "../components/typeface/typeface.scss";
+@import "../components/typeface-loading/typeface-loading.scss";
 @import "../components/pagination/pagination.scss";

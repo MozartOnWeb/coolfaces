@@ -165,7 +165,11 @@ const Navbar = (props: Props) => {
             </div>
 
             <div className="mobile-links-container">
-              <Link href={"/category/cursive"} className="mobile-link">
+              <Link
+                onClick={handleToggled}
+                href={"/category/cursive"}
+                className="mobile-link"
+              >
                 <svg
                   fill="none"
                   height="410"
@@ -184,7 +188,11 @@ const Navbar = (props: Props) => {
                 <p>cursive</p>
               </Link>
 
-              <Link href={"/category/display"} className="mobile-link">
+              <Link
+                onClick={handleToggled}
+                href={"/category/display"}
+                className="mobile-link"
+              >
                 <svg
                   fill="none"
                   height="410"
@@ -203,7 +211,11 @@ const Navbar = (props: Props) => {
                 <p>display</p>
               </Link>
 
-              <Link href={"/category/monospace"} className="mobile-link">
+              <Link
+                onClick={handleToggled}
+                href={"/category/monospace"}
+                className="mobile-link"
+              >
                 <svg
                   fill="none"
                   height="410"
@@ -222,7 +234,11 @@ const Navbar = (props: Props) => {
                 <p>monospace</p>
               </Link>
 
-              <Link href={"/category/sans-serif"} className="mobile-link">
+              <Link
+                onClick={handleToggled}
+                href={"/category/sans-serif"}
+                className="mobile-link"
+              >
                 <svg
                   fill="none"
                   height="410"
@@ -244,7 +260,11 @@ const Navbar = (props: Props) => {
                 <p>sans serif</p>
               </Link>
 
-              <Link href={"/category/serif"} className="mobile-link">
+              <Link
+                onClick={handleToggled}
+                href={"/category/serif"}
+                className="mobile-link"
+              >
                 <svg
                   fill="none"
                   height="410"
@@ -263,7 +283,11 @@ const Navbar = (props: Props) => {
                 <p>serif</p>
               </Link>
 
-              <Link href={"/category/slab"} className="mobile-link">
+              <Link
+                onClick={handleToggled}
+                href={"/category/slab"}
+                className="mobile-link"
+              >
                 <svg
                   fill="none"
                   height="410"

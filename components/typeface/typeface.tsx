@@ -1,27 +1,59 @@
 import React from "react";
+import { Suspense } from "react";
+
 import Image from "next/image";
 
-type Props = {};
+type Props = {
+  background: string;
+  alt: string;
+  icon: string;
+  name: string;
+  slug: string;
+  styles: string;
+  license: string;
+  categories: string;
+};
 
 //import assets
 import TypeImage from "@/assets/type-image.jpeg";
 import TypefaceIcon from "@/assets/type-id.svg";
 import Link from "next/link";
 
-export const Typeface = (props: Props) => {
+export const Typeface = ({
+  background,
+  alt,
+  icon,
+  license,
+  name,
+  slug,
+  styles,
+  categories,
+}: Props) => {
   return (
-    <Link href={"/typeface/pilowlava"} className="typeface">
-      <Image className="type-image" src={TypeImage} alt="type-image" />
+    <Link href={`/typeface/${slug}`} className="typeface">
+      <Image
+        width={1200}
+        height={1200}
+        className="type-image"
+        src={background}
+        alt={alt}
+      />
 
-      <Image className="typeface-icon" src={TypefaceIcon} alt="typeface-icon" />
+      <Image
+        width={1200}
+        height={1200}
+        className="typeface-icon"
+        src={icon}
+        alt="typeface-icon"
+      />
 
       <div className="type-infos">
-        <h4>Typeface Name</h4>
+        <h4>{name}</h4>
 
         <div>
-          <p className="type">Display</p>
-          <p className="style">1 style</p>
-          <p className="license">SIL Open Font License, V.1.1</p>
+          <p className="type">{categories}</p>
+          <p className="style">{styles}</p>
+          <p className="license">{license}</p>
         </div>
       </div>
     </Link>

@@ -13,11 +13,11 @@ export default function TypefaceLayout({
         <h1>Latest typefaces</h1>
 
         <section className="typefaces-container">
+          {/* <Typeface />
           <Typeface />
           <Typeface />
           <Typeface />
-          <Typeface />
-          <Typeface />
+          <Typeface /> */}
         </section>
       </div>
     </section>

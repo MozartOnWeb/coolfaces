@@ -11,14 +11,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <h1>{replaceSpecialCharacters(params.slug)} typefaces</h1>
 
       <section className="typefaces-container">
+        {/* <Typeface />
         <Typeface />
         <Typeface />
         <Typeface />
         <Typeface />
         <Typeface />
         <Typeface />
-        <Typeface />
-        <Typeface />
+        <Typeface /> */}
       </section>
 
       <Pagination />
