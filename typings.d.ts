@@ -4,7 +4,7 @@ export interface Typeface {
   infos?: string;
   icon: string;
   categories: Category[];
-  files?: string;
+  files: string;
   styles: string;
   slug: string;
   background: string;

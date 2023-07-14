@@ -9,9 +9,7 @@ import { Typeface } from "@/typings";
 
 // import components
 import { Separator } from "@/components/ui/Separator";
-
-//import icons
-import { Download } from "lucide-react";
+import { DownloadButton } from "@/components/download-button/download-button";
 
 const getCurrentTypeface = async (typeface: string) => {
   const currentTypeface = await getSingleTypeface({ typeface });
@@ -83,11 +81,8 @@ export default async function Page({
           </div>
 
           <Separator />
-          <div className="download">
-            <p>
-              Get this typeface <Download />
-            </p>
-          </div>
+
+          <DownloadButton url={typeface.files} className="download" />
         </div>
 
         {/* RIGHT SIDE */}
