@@ -24,7 +24,7 @@ export const getAllTypefaces = async () => {
 export const getSingleTypeface = ({ typeface }: { typeface: string }) => {
   return sanityClient.fetch(
     groq`
-    *[_type == "typeface" && slug.current == "${typeface}" && !(_id in path("drafts.**"))] {
+    *[_type == "typeface" && slug.current == "${typeface}" && !(_id in path("drafts.**"))][0] {
             name,
             infos,
             styles,
@@ -32,6 +32,7 @@ export const getSingleTypeface = ({ typeface }: { typeface: string }) => {
             "slug": slug.current,
             "background": background.asset -> url,
             "icon": icon.asset -> url,
+            "title": title.asset -> url,
               categories[] -> {
                 name,
             },
