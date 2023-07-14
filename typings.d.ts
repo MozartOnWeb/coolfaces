@@ -1,4 +1,5 @@
 export interface Typeface {
+  title?: string;
   name: string;
   infos?: string;
   icon: string;
