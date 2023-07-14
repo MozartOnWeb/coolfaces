@@ -21,9 +21,10 @@ export const getAllTypefaces = async () => {
 };
 
 //get single typeface
-export const getSingleTypeface = async (slug: string) => {
-  return sanityClient.fetch(groq`
-    *[_type == "typeface" && slug.current == "${slug}" && !(_id in path("drafts.**"))] {
+export const getSingleTypeface = ({ typeface }: { typeface: string }) => {
+  return sanityClient.fetch(
+    groq`
+    *[_type == "typeface" && slug.current == "${typeface}" && !(_id in path("drafts.**"))] {
             name,
             infos,
             styles,
@@ -38,5 +39,9 @@ export const getSingleTypeface = async (slug: string) => {
                 name,
             }
         }
-    `);
+    `,
+    {
+      typeface,
+    }
+  );
 };
