@@ -11,12 +11,7 @@ import { Typeface } from "@/typings";
 import { Separator } from "@/components/ui/Separator";
 import { DownloadButton } from "@/components/download-button/download-button";
 
-const getCurrentTypeface = async (typeface: string) => {
-  const currentTypeface = await getSingleTypeface({ typeface });
-
-  return currentTypeface;
-};
-
+//generate metadata
 export async function generateMetadata({
   params,
 }: {
@@ -33,6 +28,12 @@ export async function generateMetadata({
     description: infos,
   };
 }
+
+const getCurrentTypeface = async (typeface: string) => {
+  const currentTypeface = await getSingleTypeface({ typeface });
+
+  return currentTypeface;
+};
 
 export default async function Page({
   params,
