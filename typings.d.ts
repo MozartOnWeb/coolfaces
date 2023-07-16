@@ -1,9 +1,10 @@
 export interface Typeface {
+  title: string;
   name: string;
   infos?: string;
   icon: string;
   categories: Category[];
-  files?: string;
+  files: string;
   styles: string;
   slug: string;
   background: string;
