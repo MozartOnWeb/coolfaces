@@ -88,6 +88,19 @@
       line-height: 130%;
     }
 
+    .type {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0px;
+
+      .hyphenate::after {
+        content: "-";
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+      }
+    }
+
     @media screen and (max-width: 459px) {
       bottom: 10%;
 

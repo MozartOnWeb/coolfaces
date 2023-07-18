@@ -2,6 +2,7 @@ import React from "react";
 
 import Image from "next/image";
 
+import { Category } from "@/typings";
 type Props = {
   background: string;
   alt: string;
@@ -10,7 +11,7 @@ type Props = {
   slug: string;
   styles: string;
   license: string;
-  categories: string;
+  categories: Category[];
 };
 
 //import assets
@@ -50,7 +51,16 @@ export const Typeface = ({
         <h4>{name}</h4>
 
         <div>
-          <p className="type">{categories}</p>
+          <div className="type">
+            {categories.map((category, index) => (
+              <p
+                key={category.name}
+                className={index !== categories.length - 1 ? "hyphenate" : ""}
+              >
+                {category.name}
+              </p>
+            ))}
+          </div>
           <p className="style">{styles}</p>
           <p className="license">{license}</p>
         </div>
