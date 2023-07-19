@@ -51,7 +51,7 @@ export const getSingleTypeface = ({ typeface }: { typeface: string }) => {
 export const getCategoryTypefaces = ({ category }: { category: string }) => {
   return sanityClient.fetch(
     groq`
-        *[_type=="typeface" && references(*[_type=="category" && slug.current == $category]._id)] {
+        *[_type=="typeface" && references(*[_type=="category" && slug.current == "${category}"]._id)] {
             name,
             styles,
             "slug": slug.current,
