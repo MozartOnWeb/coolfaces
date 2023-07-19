@@ -1,0 +1,14 @@
+.no-typefaces {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30vh;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  grid-column: span 3;
+}
