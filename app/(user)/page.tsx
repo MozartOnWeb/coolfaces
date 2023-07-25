@@ -30,7 +30,7 @@ export default async function Home() {
         ))}
       </section>
 
-      <Pagination />
+      <Pagination pages={typefaces.length / 6} current={1} />
     </main>
   );
 }
