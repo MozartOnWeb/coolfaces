@@ -1,6 +1,9 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  current?: number;
+  length?: number;
+};
 
 //import icons
 import { ArrowBigRightDash, ArrowBigLeftDash } from "lucide-react";
@@ -13,7 +16,9 @@ export const Pagination = (props: Props) => {
         <p>Prev</p>
       </div>
 
-      <div className="current">1 / 14</div>
+      <div className="current">
+        {props.current} / {props.length}
+      </div>
 
       <div className="next">
         <p>Next</p>
