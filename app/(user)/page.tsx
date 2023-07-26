@@ -22,7 +22,7 @@ export default async function Home() {
             alt={typeface.name}
             background={typeface.background}
             icon={typeface.icon}
-            categories={typeface.categories[0].name}
+            categories={typeface.categories}
             license={typeface.license[0].name}
             name={typeface.name}
             styles={typeface.styles}
@@ -30,7 +30,7 @@ export default async function Home() {
         ))}
       </section>
 
-      <Pagination />
+      <Pagination pages={typefaces.length / 6} current={1} />
     </main>
   );
 }
