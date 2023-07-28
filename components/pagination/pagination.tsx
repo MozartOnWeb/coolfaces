@@ -24,7 +24,7 @@ export const Pagination = (props: Props) => {
 
       {props.pages > 1 && props.current !== props.pages && (
         <div className="next">
-          <p>Nextt</p>
+          <p>Next</p>
           <ArrowBigRightDash />
         </div>
       )}
