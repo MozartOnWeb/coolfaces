@@ -20,6 +20,8 @@
 
   .prev,
   .next {
+    text-decoration: none;
+    color: $white;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -45,6 +47,12 @@
         width: 100%;
       }
     }
+  }
+
+  .prev.disabled,
+  .next.disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   .prev p::after {

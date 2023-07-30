@@ -43,7 +43,22 @@ export const getNextPageTypefaces = async (
   lastId: string | null
 ): Promise<Typeface[]> => {
   if (lastId === null) {
-    return [];
+    return sanityClient.fetch(groq`
+    *[_type == "typeface"  && !(_id in path("drafts.**"))] | order(_id) [0...9] {
+            _id,
+            name,
+            styles,
+            "slug": slug.current,
+            "background": background.asset -> url,
+            "icon": icon.asset -> url,
+              categories[] -> {
+                name,
+            },
+              license[] -> {
+                name,
+            }
+        }
+    `);
   }
   const result = await sanityClient.fetch<Typeface[]>(
     groq`*[_type == "typeface" && _id > $lastId] | order(_id) [0...9] {

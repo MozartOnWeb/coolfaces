@@ -11,13 +11,28 @@ import {
   getTotalTypefaces,
 } from "@/sanity/fetch";
 
-export default async function Home() {
-  const typefaces: TypefaceTypes[] = await getAllTypefaces();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
+}) {
+  const page =
+    typeof searchParams.page === "string" ? parseInt(searchParams.page) : 1;
+
+  let lastId = null;
+
+  let typefaces: TypefaceTypes[] = await getNextPageTypefaces(lastId);
   const totalPages = await getTotalTypefaces();
   const pages = Math.ceil(totalPages / 9);
 
-  // const lastId = typefaces[typefaces.length - 1]._id;
-  // const nextPage = await getNextPageTypefaces(lastId);
+  if (page > 1) {
+    lastId = typefaces[typefaces.length - 1]._id;
+    console.log(lastId);
+    const nextPage = await getNextPageTypefaces(lastId);
+    typefaces = [...nextPage];
+  }
 
   return (
     <main className="container">
@@ -39,7 +54,7 @@ export default async function Home() {
         ))}
       </section>
 
-      <Pagination pages={pages} current={1} />
+      <Pagination pages={pages} current={page} />
     </main>
   );
 }
