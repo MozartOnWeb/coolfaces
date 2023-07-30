@@ -12,21 +12,19 @@ import { ArrowBigRightDash, ArrowBigLeftDash } from "lucide-react";
 export const Pagination = (props: Props) => {
   return (
     <section className="pagination">
-      {props.pages > 1 && props.current !== 1 && (
-        <div className="prev">
-          <ArrowBigLeftDash />
-          <p>Prev</p>
-        </div>
-      )}
+      <div className={props.current === 1 ? "prev disabled" : "prev"}>
+        <ArrowBigLeftDash />
+        <p>Prev</p>
+      </div>
 
-      <div className="current">{props.current}</div>
+      <div className="current">
+        {props.current} / {props.pages}
+      </div>
 
-      {props.pages > 1 && props.current !== props.pages && (
-        <div className="next" onClick={props.goNext}>
-          <p>Next</p>
-          <ArrowBigRightDash />
-        </div>
-      )}
+      <div className="next" onClick={props.goNext}>
+        <p>Next</p>
+        <ArrowBigRightDash />
+      </div>
     </section>
   );
 };
