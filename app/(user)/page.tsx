@@ -24,12 +24,11 @@ export default async function Home({
   let lastId = null;
 
   let typefaces: TypefaceTypes[] = await getNextPageTypefaces(lastId);
-  const totalPages = await getTotalTypefaces();
-  const pages = Math.ceil(totalPages / 9);
+  const totalTypefaces = await getTotalTypefaces();
+  const totalPages = Math.ceil(totalTypefaces / 9);
 
   if (page > 1) {
     lastId = typefaces[typefaces.length - 1]._id;
-    console.log(lastId);
     const nextPage = await getNextPageTypefaces(lastId);
     typefaces = [...nextPage];
   }
@@ -54,7 +53,7 @@ export default async function Home({
         ))}
       </section>
 
-      <Pagination pages={pages} current={page} />
+      <Pagination totalPages={totalPages} currentPage={page} />
     </main>
   );
 }
