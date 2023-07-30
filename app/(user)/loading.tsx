@@ -22,17 +22,20 @@ const loadingData = [
 
 const loading = (props: Props) => {
   return (
-    <>
-      <section className="typefaces-container">
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <section className="container">
+      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <h1>
+          <Skeleton width={120} />
+        </h1>
+        <section className="typefaces-container">
           {loadingData.map((typeface) => (
             <div key={typeface.id} className="home-loading">
               <Skeleton height={"100%"} />
             </div>
           ))}
-        </SkeletonTheme>
-      </section>
-    </>
+        </section>
+      </SkeletonTheme>
+    </section>
   );
 };
 
