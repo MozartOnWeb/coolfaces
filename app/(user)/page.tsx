@@ -5,11 +5,7 @@ import { Typeface } from "@/components/typeface/typeface";
 import { Pagination } from "@/components/pagination/pagination";
 
 //import fetch function
-import {
-  getAllTypefaces,
-  getNextPageTypefaces,
-  getTotalTypefaces,
-} from "@/sanity/fetch";
+import { getAllTypefaces, getTotalTypefaces } from "@/sanity/fetch";
 
 export default async function Home({
   searchParams,
@@ -21,17 +17,18 @@ export default async function Home({
   const page =
     typeof searchParams.page === "string" ? parseInt(searchParams.page) : 1;
 
-  let lastId = null;
+  let lastTypefaceId = null;
 
-  let typefaces: TypefaceTypes[] = await getNextPageTypefaces(lastId);
-  const totalTypefaces = await getTotalTypefaces();
-  const totalPages = Math.ceil(totalTypefaces / 9);
+  let typefaces: TypefaceTypes[] = await getAllTypefaces(lastTypefaceId);
 
   if (page > 1) {
-    lastId = typefaces[typefaces.length - 1]._id;
-    const nextPage = await getNextPageTypefaces(lastId);
+    lastTypefaceId = typefaces[typefaces.length - 1]._id;
+    const nextPage = await getAllTypefaces(lastTypefaceId);
     typefaces = [...nextPage];
   }
+
+  const totalTypefaces = await getTotalTypefaces();
+  const totalPages = Math.ceil(totalTypefaces / 9);
 
   return (
     <main className="container">

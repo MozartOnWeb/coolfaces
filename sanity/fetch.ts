@@ -13,33 +13,13 @@ export const getTotalTypefaces = async (): Promise<number> => {
   `);
 };
 
-//get all typefaces
-export const getAllTypefaces = async () => {
-  return sanityClient.fetch(groq`
-    *[_type == "typeface"  && !(_id in path("drafts.**"))] | order(_id) [0...9] {
-            _id,
-            name,
-            styles,
-            "slug": slug.current,
-            "background": background.asset -> url,
-            "icon": icon.asset -> url,
-              categories[] -> {
-                name,
-            },
-              license[] -> {
-                name,
-            }
-        }
-    `);
-};
-
 /**
  * Retrieves the next page of typefaces.
  *
  * @param lastId The ID of the last typeface in the previous page.
  * @returns An array of typefaces.
  */
-export const getNextPageTypefaces = async (
+export const getAllTypefaces = async (
   lastId: string | null
 ): Promise<Typeface[]> => {
   if (lastId === null) {
