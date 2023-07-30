@@ -6,6 +6,7 @@ import { sanityClient } from "./client";
 export const getAllTypefaces = async () => {
   return sanityClient.fetch(groq`
     *[_type == "typeface"  && !(_id in path("drafts.**"))] | order(_id) [0...9] {
+            _id,
             name,
             styles,
             "slug": slug.current,
@@ -33,22 +34,18 @@ export const getNextPageTypefaces = async (
   if (lastId === null) {
     return [];
   }
-
-  const response = await fetch<Typeface[]>(
+  const result = await sanityClient.fetch<Typeface[]>(
     groq`*[_type == "typeface" && _id > $lastId] | order(_id) [0...9] {
-    _id, title, body
-  }`,
+      _id, title
+    }`,
     { lastId }
   );
-
-  const result = await response.json();
 
   if (result.length > 0) {
     lastId = result[result.length - 1]._id;
   } else {
     lastId = null; // Reached the end
   }
-
   return result;
 };
 

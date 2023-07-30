@@ -3,6 +3,7 @@ import React from "react";
 type Props = {
   current: number;
   pages: number;
+  goNext?: () => void;
 };
 
 //import icons
@@ -21,7 +22,7 @@ export const Pagination = (props: Props) => {
       <div className="current">{props.current}</div>
 
       {props.pages > 1 && props.current !== props.pages && (
-        <div className="next">
+        <div className="next" onClick={props.goNext}>
           <p>Next</p>
           <ArrowBigRightDash />
         </div>
