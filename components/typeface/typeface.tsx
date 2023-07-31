@@ -30,16 +30,17 @@ export const Typeface = ({
   return (
     <Link href={`/typeface/${slug}`} className="typeface">
       <Image
-        width={1200}
-        height={1200}
+        width={800}
+        height={800}
         className="type-image"
         src={background}
         alt={alt}
+        priority
       />
 
       <Image
-        width={1200}
-        height={1200}
+        width={800}
+        height={800}
         className="typeface-icon"
         src={icon}
         alt="typeface-icon"
