@@ -25,7 +25,7 @@ const loading = (props: Props) => {
     <section className="container">
       <SkeletonTheme baseColor="#202020" highlightColor="#444">
         <h1>
-          <Skeleton width={120} />
+          <Skeleton borderRadius={"full"} width={120} />
         </h1>
         <section className="typefaces-container">
           {loadingData.map((typeface) => (

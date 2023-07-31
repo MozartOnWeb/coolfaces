@@ -112,7 +112,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         )}
       </section>
 
-      {typefaces.length > 0 ? <Pagination /> : null}
+      <Pagination currentPage={1} totalPages={1} />
     </main>
   );
 }
