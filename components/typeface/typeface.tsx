@@ -15,8 +15,6 @@ type Props = {
 };
 
 //import assets
-import TypeImage from "@/assets/type-image.jpeg";
-import TypefaceIcon from "@/assets/type-id.svg";
 import Link from "next/link";
 
 export const Typeface = ({
