@@ -12,7 +12,7 @@ const loading = (props: Props) => {
     <section className="single-typeface-loading">
       <SkeletonTheme baseColor="#202020" highlightColor="#444">
         <div className="typeface-page__svg">
-          <Skeleton height={"100%"} />
+          <Skeleton height={"100%"} borderRadius={"10px"} />
         </div>
 
         <section className="typeface-infos">
@@ -20,10 +20,10 @@ const loading = (props: Props) => {
           <div className="left">
             <div className="part">
               <h4>
-                <Skeleton width={100} />
+                <Skeleton width={120} height={20} />
               </h4>
               <p>
-                <Skeleton width={100} />
+                <Skeleton width={100} height={10} />
               </p>
             </div>
 
@@ -31,10 +31,10 @@ const loading = (props: Props) => {
 
             <div className="part">
               <h4>
-                <Skeleton width={100} />
+                <Skeleton width={120} height={20} />
               </h4>
               <p>
-                <Skeleton width={100} />
+                <Skeleton width={100} height={10} />
               </p>
             </div>
 
@@ -42,19 +42,17 @@ const loading = (props: Props) => {
 
             <div className="part">
               <h4>
-                <Skeleton width={100} />
+                <Skeleton width={120} height={20} />
               </h4>
               <p>
-                <Skeleton width={100} />
+                <Skeleton width={100} height={10} />
               </p>
             </div>
+          </div>
 
-            {/* RIGHT SIDE */}
-            <div className="right">
-              <div className="typeface-background-img">
-                <Skeleton />
-              </div>
-            </div>
+          {/* RIGHT SIDE */}
+          <div className="right">
+            <Skeleton height={"100%"} />
           </div>
         </section>
       </SkeletonTheme>
