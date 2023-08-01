@@ -1,8 +1,9 @@
 import React from "react";
+import Link from "next/link";
 
 type Props = {
-  current: number;
-  pages: number;
+  currentPage: number;
+  totalPages: number;
 };
 
 //import icons
@@ -11,23 +12,31 @@ import { ArrowBigRightDash, ArrowBigLeftDash } from "lucide-react";
 export const Pagination = (props: Props) => {
   return (
     <section className="pagination">
-      {props.pages > 1 && props.current !== 1 && (
-        <div className="prev">
-          <ArrowBigLeftDash />
-          <p>Prev</p>
-        </div>
-      )}
+      <Link
+        href={props.currentPage === 2 ? "/" : `/?page=${props.currentPage - 1}`}
+        className={props.currentPage === 1 ? "prev disabled" : "prev"}
+      >
+        <ArrowBigLeftDash />
+        <p>Prev</p>
+      </Link>
 
       <div className="current">
-        {props.current} / {props.pages}
+        {props.currentPage} / {props.totalPages}
       </div>
 
-      {props.pages > 1 && props.current !== props.pages && (
-        <div className="next">
-          <p>Next</p>
-          <ArrowBigRightDash />
-        </div>
-      )}
+      <Link
+        href={
+          props.currentPage === props.totalPages
+            ? "/"
+            : `/?page=${props.currentPage + 1}`
+        }
+        className={
+          props.currentPage === props.totalPages ? "next disabled" : "next"
+        }
+      >
+        <p>Next</p>
+        <ArrowBigRightDash />
+      </Link>
     </section>
   );
 };

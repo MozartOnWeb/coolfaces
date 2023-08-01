@@ -15,8 +15,6 @@ type Props = {
 };
 
 //import assets
-import TypeImage from "@/assets/type-image.jpeg";
-import TypefaceIcon from "@/assets/type-id.svg";
 import Link from "next/link";
 
 export const Typeface = ({
@@ -32,16 +30,17 @@ export const Typeface = ({
   return (
     <Link href={`/typeface/${slug}`} className="typeface">
       <Image
-        width={1200}
-        height={1200}
+        width={600}
+        height={600}
         className="type-image"
         src={background}
         alt={alt}
+        priority
       />
 
       <Image
-        width={1200}
-        height={1200}
+        width={100}
+        height={100}
         className="typeface-icon"
         src={icon}
         alt="typeface-icon"

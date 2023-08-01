@@ -5,10 +5,30 @@ import { Typeface } from "@/components/typeface/typeface";
 import { Pagination } from "@/components/pagination/pagination";
 
 //import fetch function
-import { getAllTypefaces } from "@/sanity/fetch";
+import { getAllTypefaces, getTotalTypefaces } from "@/sanity/fetch";
 
-export default async function Home() {
-  const typefaces: TypefaceTypes[] = await getAllTypefaces();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
+}) {
+  const page =
+    typeof searchParams.page === "string" ? parseInt(searchParams.page) : 1;
+
+  let lastTypefaceId = null;
+
+  let typefaces: TypefaceTypes[] = await getAllTypefaces(lastTypefaceId);
+
+  if (page > 1) {
+    lastTypefaceId = typefaces[typefaces.length - 1]._id;
+    const nextPage = await getAllTypefaces(lastTypefaceId);
+    typefaces = [...nextPage];
+  }
+
+  const totalTypefaces = await getTotalTypefaces();
+  const totalPages = Math.ceil(totalTypefaces / 9);
 
   return (
     <main className="container">
@@ -30,7 +50,7 @@ export default async function Home() {
         ))}
       </section>
 
-      <Pagination pages={typefaces.length / 6} current={1} />
+      <Pagination totalPages={totalPages} currentPage={page} />
     </main>
   );
 }
