@@ -13,18 +13,9 @@ export const getTotalTypefaces = async (): Promise<number> => {
   `);
 };
 
-/**
- * Retrieves the next page of typefaces.
- *
- * @param lastId The ID of the last typeface in the previous page.
- * @returns An array of typefaces.
- */
-export const getAllTypefaces = async (
-  lastId: string | null
-): Promise<Typeface[]> => {
-  if (lastId === null) {
-    return sanityClient.fetch(groq`
-    *[_type == "typeface"  && !(_id in path("drafts.**"))] | order(_id) [0...9] {
+export const getFirstNineTypefaces = async (): Promise<Typeface[]> => {
+  return sanityClient.fetch<Typeface[]>(groq`
+    *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [0...9] {
             _id,
             name,
             styles,
@@ -38,32 +29,32 @@ export const getAllTypefaces = async (
                 name,
             }
         }
-    `);
-  }
-  const result = await sanityClient.fetch<Typeface[]>(
-    groq`*[_type == "typeface" && _id > $lastId] | order(_id) [0...9] {
-            _id,
-            name,
-            styles,
-            "slug": slug.current,
-            "background": background.asset -> url,
-            "icon": icon.asset -> url,
-              categories[] -> {
-                name,
-            },
-              license[] -> {
-                name,
-            }
-    }`,
-    { lastId }
-  );
+  `);
+};
 
-  if (result.length > 0) {
-    lastId = result[result.length - 1]._id;
-  } else {
-    lastId = null; // Reached the end
-  }
-  return result;
+export const getNineNextTypefaces = async (
+  page: number
+): Promise<Typeface[]> => {
+  const pageSize = 9; // Number of typefaces to fetch per page
+  const start = (page - 1) * pageSize;
+  const end = start + 9;
+
+  return sanityClient.fetch<Typeface[]>(groq`
+    *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [${start}...${end}] {
+      _id,
+      name,
+      styles,
+      "slug": slug.current,
+      "background": background.asset -> url,
+      "icon": icon.asset -> url,
+      categories[] -> {
+        name,
+      },
+      license[] -> {
+        name,
+      }
+    }
+  `);
 };
 
 //get single typeface
