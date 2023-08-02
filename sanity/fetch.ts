@@ -14,17 +14,13 @@ export const getTotalTypefaces = async (): Promise<number> => {
 };
 
 /**
- * Retrieves the next page of typefaces.
+ * Retrieves the first nine typefaces from the database.
  *
- * @param lastId The ID of the last typeface in the previous page.
- * @returns An array of typefaces.
+ * @return {Promise<Typeface[]>} An array of the first nine typefaces.
  */
-export const getAllTypefaces = async (
-  lastId: string | null
-): Promise<Typeface[]> => {
-  if (lastId === null) {
-    return sanityClient.fetch(groq`
-    *[_type == "typeface"  && !(_id in path("drafts.**"))] | order(_id) [0...9] {
+export const getFirstNineTypefaces = async (): Promise<Typeface[]> => {
+  return sanityClient.fetch<Typeface[]>(groq`
+    *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [0...9] {
             _id,
             name,
             styles,
@@ -38,32 +34,38 @@ export const getAllTypefaces = async (
                 name,
             }
         }
-    `);
-  }
-  const result = await sanityClient.fetch<Typeface[]>(
-    groq`*[_type == "typeface" && _id > $lastId] | order(_id) [0...9] {
-            _id,
-            name,
-            styles,
-            "slug": slug.current,
-            "background": background.asset -> url,
-            "icon": icon.asset -> url,
-              categories[] -> {
-                name,
-            },
-              license[] -> {
-                name,
-            }
-    }`,
-    { lastId }
-  );
+  `);
+};
 
-  if (result.length > 0) {
-    lastId = result[result.length - 1]._id;
-  } else {
-    lastId = null; // Reached the end
-  }
-  return result;
+/**
+ * Retrieves the next 9 typefaces from the database based on the specified page number.
+ *
+ * @param {number} page - The page number from which to retrieve the typefaces.
+ * @return {Promise<Typeface[]>} A promise that resolves with an array of typefaces.
+ */
+export const getNineNextTypefaces = async (
+  page: number
+): Promise<Typeface[]> => {
+  const pageSize = 9; // Number of typefaces to fetch per page
+  const start = (page - 1) * pageSize;
+  const end = start + 9;
+
+  return sanityClient.fetch<Typeface[]>(groq`
+    *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [${start}...${end}] {
+      _id,
+      name,
+      styles,
+      "slug": slug.current,
+      "background": background.asset -> url,
+      "icon": icon.asset -> url,
+      categories[] -> {
+        name,
+      },
+      license[] -> {
+        name,
+      }
+    }
+  `);
 };
 
 //get single typeface
@@ -115,4 +117,24 @@ export const getCategoryTypefaces = ({ category }: { category: string }) => {
       category,
     }
   );
+};
+
+//get six latest typefaces
+export const getSixLatestTypefaces = async () => {
+  return sanityClient.fetch<Typeface[]>(groq`
+    *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [0...6] {
+      _id,
+      name,
+      styles,
+      "slug": slug.current,
+      "background": background.asset -> url,
+      "icon": icon.asset -> url,
+      categories[] -> {
+        name,
+      },
+      license[] -> {
+        name,
+      }
+    }
+  `);
 };

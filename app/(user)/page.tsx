@@ -5,7 +5,11 @@ import { Typeface } from "@/components/typeface/typeface";
 import { Pagination } from "@/components/pagination/pagination";
 
 //import fetch function
-import { getAllTypefaces, getTotalTypefaces } from "@/sanity/fetch";
+import {
+  getTotalTypefaces,
+  getFirstNineTypefaces,
+  getNineNextTypefaces,
+} from "@/sanity/fetch";
 
 export default async function Home({
   searchParams,
@@ -17,14 +21,10 @@ export default async function Home({
   const page =
     typeof searchParams.page === "string" ? parseInt(searchParams.page) : 1;
 
-  let lastTypefaceId = null;
+  let typefaces = await getFirstNineTypefaces();
 
-  let typefaces: TypefaceTypes[] = await getAllTypefaces(lastTypefaceId);
-
-  if (page > 1) {
-    lastTypefaceId = typefaces[typefaces.length - 1]._id;
-    const nextPage = await getAllTypefaces(lastTypefaceId);
-    typefaces = [...nextPage];
+  if (page !== 1) {
+    typefaces = await getNineNextTypefaces(page);
   }
 
   const totalTypefaces = await getTotalTypefaces();
