@@ -13,6 +13,11 @@ export const getTotalTypefaces = async (): Promise<number> => {
   `);
 };
 
+/**
+ * Retrieves the first nine typefaces from the database.
+ *
+ * @return {Promise<Typeface[]>} An array of the first nine typefaces.
+ */
 export const getFirstNineTypefaces = async (): Promise<Typeface[]> => {
   return sanityClient.fetch<Typeface[]>(groq`
     *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [0...9] {
@@ -32,6 +37,12 @@ export const getFirstNineTypefaces = async (): Promise<Typeface[]> => {
   `);
 };
 
+/**
+ * Retrieves the next 9 typefaces from the database based on the specified page number.
+ *
+ * @param {number} page - The page number from which to retrieve the typefaces.
+ * @return {Promise<Typeface[]>} A promise that resolves with an array of typefaces.
+ */
 export const getNineNextTypefaces = async (
   page: number
 ): Promise<Typeface[]> => {
@@ -106,4 +117,24 @@ export const getCategoryTypefaces = ({ category }: { category: string }) => {
       category,
     }
   );
+};
+
+//get six latest typefaces
+export const getSixLatestTypefaces = async () => {
+  return sanityClient.fetch<Typeface[]>(groq`
+    *[_type == "typeface" && !(_id in path("drafts.**"))] | order(_id) [0...6] {
+      _id,
+      name,
+      styles,
+      "slug": slug.current,
+      "background": background.asset -> url,
+      "icon": icon.asset -> url,
+      categories[] -> {
+        name,
+      },
+      license[] -> {
+        name,
+      }
+    }
+  `);
 };
