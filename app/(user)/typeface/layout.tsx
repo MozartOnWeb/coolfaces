@@ -8,7 +8,6 @@ export default async function TypefaceLayout({
   children: React.ReactNode;
 }) {
   const typefaces = await getSixLatestTypefaces();
-  console.log(typefaces);
 
   return (
     <section className="container typeface-layout">
